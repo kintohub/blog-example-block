@@ -1,0 +1,31 @@
+{
+  "name": "blog-example-block",
+  "version": "0.1.0",
+  "description": "Blog dummy microservice for kintohub",
+  "main": "app/index.js",
+  "scripts": {
+    "dev": "babel-node app/index.js",
+    "start": "nodemon --exec npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kintohub/blog-example-block.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kintohub/blog-example-block/issues"
+  },
+  "homepage": "https://github.com/kintohub/blog-example-block#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.46",
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/node": "^7.0.0-beta.46",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "nodemon": "^1.17.4"
+  },
+  "dependencies": {
+    "hapi": "^17.4.0"
+  }
+}
