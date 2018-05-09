@@ -22,7 +22,13 @@ server.route({
   method: 'POST',
   path: '/articles',
   handler(request, h) {
-    const { title, body } = request.payload
+    let payload = null
+    try {
+      payload = JSON.parse(request.payload)
+    } catch (e) {
+      payload = {}
+    }
+    const { title, body } = payload
     const userId = request.headers['authexample-id']
     const name = request.headers['authexample-name']
     if (!userId || !name) {
