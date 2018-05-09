@@ -5,7 +5,12 @@
   "main": "app/index.js",
   "scripts": {
     "dev": "babel-node app/index.js",
-    "start": "nodemon --exec npm run dev"
+    "start": "nodemon --exec npm run dev",
+    "build:clean": "rm -rf dist && mkdir dist",
+    "build:server": "babel -d ./dist ./app",
+    "prod:build": "npm run build:clean && npm run build:server",
+    "prod:server": "PORT=80 node dist/index.js",
+    "prod": "npm run prod:build && npm run prod:server"
   },
   "repository": {
     "type": "git",
