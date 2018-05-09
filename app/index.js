@@ -29,8 +29,8 @@ server.route({
       payload = {}
     }
     const { title, body } = payload
-    const userId = request.headers['authexample-id']
-    const name = request.headers['authexample-name']
+    const userId = 1
+    const name = 'Nadeem '
     if (!userId || !name) {
       return h.response({ error: 'You must login first' }).code(401)
     }
