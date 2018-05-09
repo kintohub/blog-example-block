@@ -24,7 +24,7 @@ server.route({
   handler(request, h) {
     let payload = null
     try {
-      payload = JSON.parse(request.payload)
+      payload = JSON.parse(request.payload) || {}
     } catch (e) {
       payload = {}
     }
