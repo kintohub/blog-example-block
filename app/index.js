@@ -9,8 +9,8 @@ const server = new Hapi.server({
  * @apiName CreateArticle
  * @apiParam (Body) {String} title article title
  * @apiParam (Body) {String} body article body
- * @apiParam (Session) {String} [authexample-id] logged in user id
- * @apiParam (Session) {String} [authexample-name] logged in user name
+ * @apiHeader (Session) {String} [authexample-id] logged in user id
+ * @apiHeader (Session) {String} [authexample-name] logged in user name
  * @apiError (Error_401) {String} errors unauthenticated error message
  * @apiSuccess (Success_200) {Number} id new article id
  * @apiSuccess (Success_200) {String} title new article title
