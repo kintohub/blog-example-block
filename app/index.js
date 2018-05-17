@@ -22,15 +22,9 @@ server.route({
   method: 'POST',
   path: '/articles',
   handler(request, h) {
-    let payload = null
-    try {
-      payload = JSON.parse(request.payload) || {}
-    } catch (e) {
-      payload = {}
-    }
-    const { title, body } = payload
-    const userId = 1
-    const name = 'Nadeem '
+    const { title, body } = request.payload
+    const userId = request.headers['authexample-id']
+    const name = request.headers['authexample-name']
     if (!userId || !name) {
       return h.response({ error: 'You must login first' }).code(401)
     }
