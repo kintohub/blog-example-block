@@ -5,7 +5,7 @@ const server = new Hapi.server({
 })
 
 /**
- * @api {POST} /articles create a new article
+ * @api {POST} /articles A dummy create article action, user must be logged in via authexample/login first before calling this action.
  * @apiName CreateArticle
  * @apiParam (Body) {String} title article title
  * @apiParam (Body) {String} body article body
