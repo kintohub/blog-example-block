@@ -7,28 +7,38 @@ const server = new Hapi.server({
 /**
  * @api {POST} /articles A dummy create article action, user must be logged in via authexample/login first before calling this action.
  * @apiName CreateArticle
- * @apiParam (Body) {String} title article title
- * @apiParam (Body) {String} body article body
+ * @apiParam {String} title article title
+ * @apiParam {String} body article body
  * @apiHeader (Session) {String} [authexample-id] logged in user id
  * @apiHeader (Session) {String} [authexample-name] logged in user name
- * @apiError (Error_401) {String} errors unauthenticated error message
- * @apiSuccess (Success_200) {Number} id new article id
- * @apiSuccess (Success_200) {String} title new article title
- * @apiSuccess (Success_200) {String} body new article body
- * @apiSuccess (Success_200) {String} username name of the user who created the article
- * @apiSuccess (Success_200) {String} userId id of the user who created the article
+ * @apiSuccess {Number} id new article id
+ * @apiSuccess {String} title new article title
+ * @apiSuccess {String} body new article body
+ * @apiSuccess {String} username name of the user who created the article
+ * @apiSuccess {String} userId id of the user who created the article
+ * @apiError (401) {String} error unauthenticated error message
+ * @apiError {String} error invalid params error message
  */
 server.route({
   method: 'POST',
   path: '/articles',
   handler(request, h) {
-    const { title, body } = request.payload
+    const { payload } = request
     const userId = request.headers['authexample-id']
     const name = request.headers['authexample-name']
     if (!userId || !name) {
       return h.response({ error: 'You must login first' }).code(401)
     }
-    return h.response({ id: 1, title, body, userId, name })
+    if (!payload || !payload.title || !payload.body) {
+      return h.response({ error: 'title and body are required' })
+    }
+    return h.response({
+      id: 1,
+      title: payload.title,
+      body: payload.body,
+      userId,
+      name
+    })
   }
 })
 
